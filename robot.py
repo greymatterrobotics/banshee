@@ -5,4 +5,4 @@ from brain import *
 
 r = Brain()
 
-print "Done niggas"
+print "Done lol"
