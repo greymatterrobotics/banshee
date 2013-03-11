@@ -9,17 +9,20 @@ class Fans:
 		self.r = Banshee
 
 		# Init ESC
-		#self.r.power._set_motor_rail(False)
-		#sleep(0.5)
-		#self.all_off()
-		#self.r.power._set_motor_rail(True)
-		#sleep(6)
+		self.r.power._set_motor_rail(False)
+		sleep(0.5)
+		self.all_off()
+		self.r.power._set_motor_rail(True)
+		sleep(6)
 		print "Init fans"
 
 	# Motor helpers
+	def off(self, motor):
+		self.r.servos[0][motor] = 53
+
 	def all_off(self):
-		for i in range(4):
-			self.r.servos[0][i] = 53
+		for i in range(5):
+			self.off(i)
 
 	def blow(self, motors):
 		for i in motors:
@@ -40,3 +43,10 @@ class Fans:
 
 	def stop(self):
 		self.all_off()
+
+	# Lift helpers
+	def lift(self):
+		self.blow(4)
+
+	def drop(self):
+		self.off(4)
