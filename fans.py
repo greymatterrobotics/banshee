@@ -1,15 +1,20 @@
+# Fans
+# Handles all the fan shit like moving and blowing
+
+from banshee import *
 from time import sleep
 
 class Fans:
-	def __init__(self, robot):
-		self.r = robot
+	def __init__(self):
+		self.r = Banshee
 
 		# Init ESC
-		self.r.power._set_motor_rail(False)
-		sleep(0.5)
-		self.all_off()
-		self.r.power._set_motor_rail(True)
-		sleep(6)
+		#self.r.power._set_motor_rail(False)
+		#sleep(0.5)
+		#self.all_off()
+		#self.r.power._set_motor_rail(True)
+		#sleep(6)
+		print "Init fans"
 
 	# Motor helpers
 	def all_off(self):

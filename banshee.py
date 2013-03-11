@@ -1,13 +1,11 @@
+# Banshee
+# Wrapper around the Robot object to make it a singleton
+
 from sr import *
-from fans import *
-from eyes import *
-from sensors import *
 
-class Banshee:
-	def __init__(self):
-		self.r = Robot()
-
-		self.fans = Fans(self.r)
-		self.eyes = Eyes(self.r)
-		self.sensors = Sensors()
-		print "Robot initialised"
+class Banshee(Robot):
+	_instance = None
+	def __new__(cls, *args, **kwargs):
+		if not cls._instance:
+			cls._instance = super(Robot, cls).__new__(cls, *args, **kwargs)
+		return cls._instance

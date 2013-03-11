@@ -1,6 +1,12 @@
+# Eyes
+# Handles vision stuff like seeing
+
+from banshee import *
+
 class Eyes:
-	def __init__(self, robot):
-		self.r = robot
+	def __init__(self):
+		self.r = Banshee
+		print "Init eyes"
 
 	def is_markers(self):
 		markers = self.r.see()

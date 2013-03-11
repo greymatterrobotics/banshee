@@ -1,3 +1,8 @@
-from banshee import *
+# Main file
+# Does fuck all, only init the brain
 
-b = Banshee()
+from brain import *
+
+r = Brain()
+
+print "Done niggas"
