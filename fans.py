@@ -6,7 +6,7 @@ from time import sleep
 
 class Fans:
 	def __init__(self):
-		self.r = Banshee
+		self.r = Banshee()
 
 		# Init ESC
 		self.r.power._set_motor_rail(False)
@@ -46,7 +46,7 @@ class Fans:
 
 	# Lift helpers
 	def lift(self):
-		self.blow(4)
+		self.blow([4])
 		sleep(0.5)
 
 	def drop(self):
