@@ -47,6 +47,7 @@ class Fans:
 	# Lift helpers
 	def lift(self):
 		self.blow(4)
+		sleep(0.5)
 
 	def drop(self):
 		self.off(4)
