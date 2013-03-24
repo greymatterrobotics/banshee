@@ -42,7 +42,7 @@ class Fans:
 		self.suck([0, 1])
 
 	def spin(self):
-		self.blow(range(3))
+		self.blow(range(4))
 
 	def stop(self):
 		self.all_off()
