@@ -33,11 +33,11 @@ class Fans:
 			self.r.servos[0][i] = 47
 
 	# Movement helpers
-	def forwards(self):
+	def backwards(self):
 		self.blow([0, 1])
 		self.suck([2, 3])
 
-	def backwards(self):
+	def forwards(self):
 		self.blow([2, 3])
 		self.suck([0, 1])
 
@@ -49,7 +49,7 @@ class Fans:
 
 	# Lift helpers
 	def lift(self):
-		self.r.servos[0][4] = 61
+		self.r.servos[0][4] = 64
 		sleep(0.5)
 
 	def drop(self):

@@ -12,8 +12,8 @@ class Brain:
 		print "Init brain"
 		print "Running lift fan"
 		self.fans.lift()
-		sleep(1)
-		print "Forwards"
 		self.fans.spin()
 		sleep(5)
-		self.fans.stop()
+		self.fans.drop()
+		self.fans.all_off()
+		sleep(1)
