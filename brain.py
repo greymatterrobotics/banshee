@@ -10,10 +10,7 @@ class Brain:
 		self.fans = Fans()
 		self.eyes = Eyes()
 		print "Init brain"
-		print "Running lift fan"
-		self.fans.lift()
-		self.fans.spin()
-		sleep(5)
-		self.fans.drop()
+		print "Running movement fans"
+		self.fans.blow(range(5))
+		sleep(3)
 		self.fans.all_off()
-		sleep(1)
