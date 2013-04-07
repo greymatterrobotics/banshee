@@ -26,7 +26,7 @@ class Fans:
 
 	def blow(self, motors):
 		for i in motors:
-			sleep(0.1)
+			sleep(0.5)
 			self.r.servos[0][i] = 59
 			
 	def suck(self, motors):

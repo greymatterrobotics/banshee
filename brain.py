@@ -11,6 +11,11 @@ class Brain:
 		self.eyes = Eyes()
 		print "Init brain"
 		print "Running movement fans"
-		self.fans.blow(range(5))
+		sleep(3)
+		self.fans.blow([0, 1])
+		sleep(3)
+		self.fans.all_off()
+		sleep(2)
+		self.fans.blow([2, 3])
 		sleep(3)
 		self.fans.all_off()
