@@ -11,7 +11,7 @@ class Fans:
 		# Init ESC
 		self.r.power._set_motor_rail(False)
 		sleep(0.5)
-		self.all_off()
+		self.stop() # Ensure the ESCs are set to off pos
 		self.r.power._set_motor_rail(True)
 		sleep(6)
 		print "Init fans"
@@ -20,7 +20,7 @@ class Fans:
 	def off(self, motor):
 		self.r.servos[0][motor] = 53
 
-	def all_off(self):
+	def stop(self):
 		for i in range(5):
 			self.off(i)
 
@@ -33,25 +33,22 @@ class Fans:
 		for i in motors:
 			self.r.servos[0][i] = 47
 
+
 	# Movement helpers
 	def backwards(self):
 		self.blow([0, 1])
-		self.suck([2, 3])
 
 	def forwards(self):
-		self.blow([2, 3])
 		self.suck([0, 1])
 
-	def spin(self):
-		self.blow(range(4))
+	def left(self):
+		self.blow([2, 3])
 
-	def stop(self):
-		self.all_off()
+	def right(self):
+		self.suck([2, 3])
+
 
 	# Lift helpers
 	def lift(self):
 		self.r.servos[0][4] = 64
 		sleep(0.5)
-
-	def drop(self):
-		self.off(4)

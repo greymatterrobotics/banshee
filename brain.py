@@ -3,8 +3,7 @@
 
 from fans import *
 from eyes import *
-from time import sleep
-from time import clock
+from time import sleep, time
 
 class Brain:
 	def __init__(self):
@@ -15,11 +14,7 @@ class Brain:
 		sleep(2)
 
 
-		target_time = time.clock() + 5
+		self.fans.forwards()
+		sleep(5)
 
-		while time.clock < target_time:
-			self.fans.blow(range(5))
-			sleep(0.1)
-			print "Iterating"
-
-		self.fans.all_off()
+		self.fans.stop()
