@@ -4,6 +4,7 @@
 from fans import *
 from eyes import *
 from time import sleep
+from time import clock
 
 class Brain:
 	def __init__(self):
@@ -11,11 +12,14 @@ class Brain:
 		self.eyes = Eyes()
 		print "Init brain"
 		print "Running movement fans"
-		sleep(3)
-		self.fans.blow([0, 1])
-		sleep(3)
-		self.fans.all_off()
 		sleep(2)
-		self.fans.blow([2, 3])
-		sleep(3)
+
+
+		target_time = time.clock() + 5
+
+		while time.clock < target_time:
+			self.fans.blow(range(5))
+			sleep(0.1)
+			print "Iterating"
+
 		self.fans.all_off()
