@@ -14,7 +14,30 @@ class Brain:
 		sleep(2)
 
 
+		print "Forwards"
 		self.fans.forwards()
-		sleep(5)
-
+		sleep(2)
 		self.fans.stop()
+
+		sleep(0.5)
+
+		print "back"
+		self.fans.backwards()
+		sleep(2)
+		self.fans.stop()
+
+		sleep(0.5)
+
+		print "left"
+		self.fans.left()
+		sleep(2)
+		self.fans.stop()
+
+		sleep(0.5)
+
+		print "right"
+		self.fans.right()
+		sleep(2)
+		self.fans.stop()
+
+		sleep(0.5)
