@@ -1,12 +1,11 @@
 # Fans
 # Handles all the fan shit like moving and blowing
 
-from banshee import *
 from time import sleep
 
 class Fans:
-	def __init__(self):
-		self.r = Banshee()
+	def __init__(self, robot):
+		self.r = robot
 
 		# Init ESC
 		self.r.power._set_motor_rail(False)
@@ -25,13 +24,13 @@ class Fans:
 			self.off(i)
 
 	def blow(self, motors):
-		for x in range(106, 118):
+		for x in range(106, 121):
 			for i in motors:
 				self.r.servos[0][i] = float(x) / 2
 				sleep(0.01)
 
 	def suck(self, motors):
-		for x in range(106, 94, -1):
+		for x in range(106, 89, -1):
 			for i in motors:
 				self.r.servos[0][i] = float(x) / 2
 				sleep(0.01)
