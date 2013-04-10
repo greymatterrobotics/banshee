@@ -4,5 +4,3 @@
 from brain import *
 
 r = Brain()
-
-print "Done lol"

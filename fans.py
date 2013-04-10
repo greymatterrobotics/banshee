@@ -53,4 +53,4 @@ class Fans:
 	# Lift helpers
 	def lift(self):
 		self.r.servos[0][4] = 64
-		sleep(0.5)
+		sleep(2)
