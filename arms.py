@@ -9,12 +9,21 @@ class Arms:
 
 	# Move arm to the forward facing grab position
 	def grab_pos(self):
-		# 60 is rotate forwards
-		# 40 is rotate back
-		self.r.servos[0][7] = 60
-		sleep(1)
-		self.r.servos[0][7] = 50
-		sleep(0.2)
+		self.r.motors[0].target = -20
+		sleep(0.1)
+		while not self.r.io[0].input[0].d:
+			sleep(0.05)
+		self.r.motors[0].target = 0
+		sleep(0.5)
+		# Compensate
+		self.r.motors[0].target = 20
+		sleep(0.5)
+		self.r.motors[0].target = 0
+
+	def open_arms(self):
+		self.r.servos[0][5] = 70
+		self.r.servos[0][6] = 25
+		sleep(0.5)
 
 	def grab(self):
 		# Move to 'grab rest' position (dead straight)
@@ -28,6 +37,13 @@ class Arms:
 
 	# Move arm back to over the robot
 	def rest_pos(self):
-		self.r.servos[0][7] = 40
-		sleep(5)
-		self.r.servos[0][7] = 50
+		self.r.motors[0].target = 20
+		sleep(1)
+		while not self.r.io[0].input[0].d:
+			sleep(0.05)
+		self.r.motors[0].target = 0
+		sleep(0.5)
+		# Compensate
+		self.r.motors[0].target = -20
+		sleep(0.5)
+		self.r.motors[0].target = 0

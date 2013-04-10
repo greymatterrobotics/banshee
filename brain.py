@@ -14,13 +14,13 @@ class Brain:
 		self.eyes = Eyes(self.robot)
 		self.fans = Fans(self.robot)
 
-		self.fans.lift()
+		self.arms.open_arms()
 		sleep(1)
-		self.fans.forwards()
-		sleep(5)
-		self.fans.stop()
-
+		self.arms.grab_pos()
 		sleep(1)
+		self.arms.grab()
+		sleep(1)
+		self.arms.rest_pos()
 
 		self.die()
 
