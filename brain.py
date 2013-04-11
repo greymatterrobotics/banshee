@@ -35,13 +35,3 @@ class Brain:
 	def die(self):
 		sleep(0.5)
 		self.robot.power._set_motor_rail(False)
-
-	def test_encoder(self):
-		acount = 0
-		bcount = 0
-		while True:
-			acount = acount + self.robot.io[0].input[0].d
-			bcount = bcount + self.robot.io[0].input[1].d
-			print acount
-			print bcount
-			print ""
