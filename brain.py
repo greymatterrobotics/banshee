@@ -14,6 +14,7 @@ class Brain:
 		self.eyes = Eyes(self.robot)
 		self.fans = Fans(self.robot)
 
+		# Grab the box
 		self.arms.open_arms()
 		sleep(1)
 		self.arms.grab_pos()
@@ -21,6 +22,13 @@ class Brain:
 		self.arms.grab()
 		sleep(1)
 		self.arms.rest_pos()
+
+		sleep(2)
+
+		# Put on pedastal
+		self.arms.pedastal_pos()
+		sleep(1)
+		self.arms.open_arms()
 
 		self.die()
 

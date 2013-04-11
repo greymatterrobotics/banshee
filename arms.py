@@ -14,10 +14,10 @@ class Arms:
 		while not self.r.io[0].input[0].d:
 			sleep(0.05)
 		self.r.motors[0].target = 0
-		sleep(0.5)
+		sleep(0.1)
 		# Compensate
 		self.r.motors[0].target = 20
-		sleep(0.5)
+		sleep(0.3)
 		self.r.motors[0].target = 0
 
 	def open_arms(self):
@@ -37,13 +37,19 @@ class Arms:
 
 	# Move arm back to over the robot
 	def rest_pos(self):
-		self.r.motors[0].target = 20
+		self.r.motors[0].target = 30
 		sleep(1)
 		while not self.r.io[0].input[0].d:
 			sleep(0.05)
 		self.r.motors[0].target = 0
-		sleep(0.5)
+		sleep(0.1)
 		# Compensate
 		self.r.motors[0].target = -20
 		sleep(0.5)
 		self.r.motors[0].target = 0
+
+	def pedastal_pos(self):
+		self.r.motors[0].target = -30
+		sleep(1)
+		self.r.motors[0].target = 0
+		sleep(0.1)
