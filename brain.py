@@ -12,8 +12,20 @@ class Brain:
 		self.robot = Robot()
 		self.arms = Arms(self.robot)
 		self.eyes = Eyes(self.robot)
-		self.fans = Fans(self.robot)
+		#self.fans = Fans(self.robot)
 
+		self.start()
+
+		self.die()
+
+	def die(self):
+		sleep(0.5)
+		self.robot.power._set_motor_rail(False)
+
+	def start(self):
+		print "Doing stuff"
+
+	def grab_place_box(self):
 		# Grab the box
 		self.arms.open_arms()
 		sleep(1)
@@ -29,9 +41,3 @@ class Brain:
 		self.arms.pedastal_pos()
 		sleep(1)
 		self.arms.open_arms()
-
-		self.die()
-
-	def die(self):
-		sleep(0.5)
-		self.robot.power._set_motor_rail(False)
