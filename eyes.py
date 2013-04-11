@@ -35,8 +35,16 @@ class Eyes:
 		positions = []
 		for m in markers:
 			if m.info.marker_type == MARKER_ARENA:
-				m_coords = arena_marker_coords(m.info.code)
-				positions.append(self.point(math.sin(m.rot_y) * m.dist) + m_coords.x, math.cos(m.rot_y) * m.dist + m_coords.y)
+				if 0 <= m.info.code <= 6:
+					positions.append(self.point(math.cos(m.rot_y) * m.dist, (math.sin(m.rot_y) * m.dist) + (m.info.code + 1))
+				elif 7 <= m.info.code <= 13:
+					positions.append(self.point((math.sin(m.rot_y) * m.dist) + (m.info.code - 6),8 - (math.cos(m.rot_y) * m.dist))
+				elif 14 <= m.info.code <= 20:
+					positions.append(self.point(8 - (math.cos(m.rot_y) * m.dist), (math.sin(m.rot_y) * m.dist) + (7 - (m.info.code - 14)))
+				elif 21 <= m.info.code <= 27:
+					positions.append(self.point((math.sin(m.rot_y) * m.dist) + (7 - (m.info.code - 21)), math.cos(m.rot_y) * m.dist)
+				else
+					raise Exception("Arena marker code not dealt with") #This should never be called. If it is, panic
 		for p in positions:
 			sum_x += p.x
 			sum_y += p.y
@@ -45,18 +53,3 @@ class Eyes:
 			return self.point(sum_x / len(positions), sum_y / len(positions))
 		else:
 			return None
-
-
-	def arena_marker_coords(self, marker_number):
-		#Simple function to give arena coordinates of an arena marker.
-
-		if 0 <= marker_number <= 6:
-			return self.point(0, marker_number + 1)
-		elif 7 <= marker_number <= 13:
-			return self.point(marker_number - 6, 8)
-		elif 14 <= marker_number <= 20:
-			return self.point(8, 7 - (marker_number - 14) # Numbers from top to bottom are 20...14, we want to return 1...7. marker_number - 14 gives 6...0, 7 - (6...0) gives 1...7
-		elif 21 <= marker_number <= 27:
-			return self.point(7 - (marker_number - 21), 0) # Numbers from left to right are 27...21, we want to return 1...7. marker_number - 21 gives 6...0, 7 - (6...0) gives 1...7
-		else:
-			raise Exception("Passed marker number not that of an arena marker")
