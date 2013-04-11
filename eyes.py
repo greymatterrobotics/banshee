@@ -55,7 +55,7 @@ class Eyes:
 		elif 7 <= marker_number <= 13:
 			return self.point(marker_number - 6, 8)
 		elif 14 <= marker_number <= 20:
-			return self.point(8, 7 - (marker_number - 14) # Numbers from top to bottom are 20...14, we want to return 1...7. marker_number - 14 gives 6...0, 7 - (6...0) gives 1...7
+			return self.point(8, 7 - (marker_number - 14)) # Numbers from top to bottom are 20...14, we want to return 1...7. marker_number - 14 gives 6...0, 7 - (6...0) gives 1...7
 		elif 21 <= marker_number <= 27:
 			return self.point(7 - (marker_number - 21), 0) # Numbers from left to right are 27...21, we want to return 1...7. marker_number - 21 gives 6...0, 7 - (6...0) gives 1...7
 		else:
