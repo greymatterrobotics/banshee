@@ -23,6 +23,15 @@ class Brain:
 		self.robot.power._set_motor_rail(False)
 
 	def start(self):
+		# Grab box immediately
+		self.arms.open_arms()
+		print "About to grip"
+		sleep(1)
+		self.arms.grab()
+
+		print "Moving forwards for a bit"
+		sleep(1)
+
 		pedestal_rot = False
 		# Identity operator because it could return 0deg which is Falsey
 		while pedestal_rot is False:
@@ -59,8 +68,18 @@ class Brain:
 
 		# Drop box onto thingy
 		self.arms.pedestal_pos()
+		self.arms.open_arms()
+		sleep(2)
 
 		# Clap hands
+
+		# Return grabber to rest pos
+		self.arms.rest_pos()
+
+		print "Moving back a little"
+		sleep(0.5)
+		print "Rotating 180deg"
+		sleep(2)
 
 
 	def grab_place_box(self):
