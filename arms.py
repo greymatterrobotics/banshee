@@ -48,7 +48,7 @@ class Arms:
 		sleep(0.5)
 		self.r.motors[0].target = 0
 
-	def pedastal_pos(self):
+	def pedestal_pos(self):
 		self.r.motors[0].target = -30
 		sleep(1)
 		self.r.motors[0].target = 0

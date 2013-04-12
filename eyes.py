@@ -1,6 +1,7 @@
 # Eyes
 # Handles vision stuff like seeing
 from collections import namedtuple
+from sr import *
 import math
 
 class Eyes:
@@ -9,10 +10,27 @@ class Eyes:
 		self.point = namedtuple('Point', ['x', 'y'])
 		print "Init eyes"
 
+	def can_see_pedestal(self):
+		markers = self.is_markers()
+		if markers != False:
+			for m in markers:
+				if m.info.marker_type == MARKER_PEDESTAL:
+					return {'rot': m.centre.polar.rot_y, 'id': m.info.code}
+		else:
+			return False
+
+	def pedestal_rotation(self, code):
+		markers = self.is_markers()
+		if markers != False:
+			for m in markers:
+				if m.info.code == code:
+					return m.centre.polar.rot_y
+
+
 	def is_markers(self):
 		markers = self.r.see()
 		if len(markers) > 0:
-			return True
+			return markers
 		else:
 			return False
 
