@@ -12,10 +12,17 @@ class Brain:
 		self.robot = Robot()
 		self.arms = Arms(self.robot)
 		self.eyes = Eyes(self.robot)
-		#self.fans = Fans(self.robot)
+		self.fans = Fans(self.robot)
 
 		#self.start()
-		self.second_token()
+		#self.second_token()
+
+
+		self.fans.forwards()
+
+		sleep(10)
+		self.fans.stop()
+
 
 		self.die()
 
@@ -24,14 +31,16 @@ class Brain:
 		self.robot.power._set_motor_rail(False)
 
 	def strafe_left_to_pedestal(self):
+		self.fans.lift()
 		pedestal_rot = False
 		# Identity operator because it could return 0deg which is Falsey
 		while pedestal_rot is False:
 			pedestal = self.eyes.can_see_pedestal()
-			print "Moving left"
-			sleep(0.2)
+			self.fans.left()
 			if pedestal is not False:
 				pedestal_rot = pedestal['rot']
+				self.fans.stop()
+			sleep(0.2)
 
 		self.align_with_marker(pedestal['id'])
 
@@ -42,16 +51,22 @@ class Brain:
 		sleep(1)
 		self.arms.grab()
 
-		print "Moving forwards for a bit"
+		print "Moving forwards a bit"
+		self.fans.forwards()
+		sleep(2)
+		self.fans.stop()
 		sleep(1)
 
+		print "Strafing left to pedestal"
 		self.strafe_left_to_pedestal()
 
 		# Move to the pedestal
-		print "Turning off the lift fan"
+		print "Move forwards to pedestal"
+		self.fans.stop()
 		sleep(0.5)
-		print "Going forwards"
+		self.fans.forwards()
 		sleep(5)
+		self.fans.stop()
 		print "At pedestal"
 		sleep(0.5)
 
@@ -106,6 +121,8 @@ class Brain:
 		self.arms.open_arms()
 		sleep(2)
 
+		self.arms.rest_pos()
+
 	def align_with_marker(self, id):
 		# Align to the pedestal
 		aligned = False
@@ -113,11 +130,12 @@ class Brain:
 			pedestal_rot = self.eyes.pedestal_rotation(id)
 			# Check we still have eyes on the marker
 			if pedestal_rot > 11:
-				print "Adjusting a little more left"
+				self.fans.left()
 			elif pedestal_rot < -2:
-				print "Overshot!! Adjusting back right"
+				self.fans.right()
 			elif -2 < pedestal_rot < 11:
-				print "aligned!"
+				print "Aligned!"
+				self.fans.stop()
 				aligned = True
 			else:
 				print "Well something fucked up"
