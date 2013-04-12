@@ -30,7 +30,6 @@ class Fans:
 				sleep(0.01)
 
 	def suck(self, motors):
-		print "Setting higher power"
 		for x in range(106, 75, -1):
 			for i in motors:
 				self.r.servos[0][i] = float(x) / 2
@@ -43,8 +42,9 @@ class Fans:
 		self.blow([0, 1])
 
 	def forwards(self):
-		self.lift()
 		self.suck([0, 1])
+		sleep(1)
+		self.lift()
 
 	def left(self):
 		self.lift()
