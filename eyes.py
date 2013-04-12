@@ -1,6 +1,7 @@
 # Eyes
 # Handles vision stuff like seeing
 from collections import namedtuple
+from sr import *
 import math
 
 class Eyes:
@@ -36,15 +37,22 @@ class Eyes:
 		for m in markers:
 			if m.info.marker_type == MARKER_ARENA:
 				if 0 <= m.info.code <= 6:
-					positions.append(self.point(math.cos(m.rot_y) * m.dist, (math.sin(m.rot_y) * m.dist) + (m.info.code + 1))
+					positions.append(self.point(math.cos(math.radians(m.orientation.rot_y)) * m.dist, \
+						(math.sin(math.radians(m.orientation.rot_y)) * m.dist) + (m.info.code + 1)))
 				elif 7 <= m.info.code <= 13:
-					positions.append(self.point((math.sin(m.rot_y) * m.dist) + (m.info.code - 6),8 - (math.cos(m.rot_y) * m.dist))
+					positions.append(self.point((math.sin(math.radians(m.orientation.rot_y)) * m.dist) + (m.info.code - 6), \
+						8 - (math.cos(math.radians(m.orientation.rot_y)) * m.dist)))
 				elif 14 <= m.info.code <= 20:
-					positions.append(self.point(8 - (math.cos(m.rot_y) * m.dist), (math.sin(m.rot_y) * m.dist) + (7 - (m.info.code - 14)))
+					positions.append(self.point(8 - (math.cos(math.radians(m.orientation.rot_y)) * m.dist), \
+						(math.sin(math.radians(m.orientation.rot_y)) * m.dist) + (7 - (m.info.code - 14))))
 				elif 21 <= m.info.code <= 27:
-					positions.append(self.point((math.sin(m.rot_y) * m.dist) + (7 - (m.info.code - 21)), math.cos(m.rot_y) * m.dist)
-				else
+					positions.append(self.point((math.sin(math.radians(m.orientation.rot_y)) * m.dist) + (7 - (m.info.code - 21)), \
+						math.cos(math.radians(m.orientation.rot_y)) * m.dist))
+				else:
 					raise Exception("Arena marker code not dealt with") #This should never be called. If it is, panic
+		
+		sum_x = 0
+		sum_y = 0
 		for p in positions:
 			sum_x += p.x
 			sum_y += p.y

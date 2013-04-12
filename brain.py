@@ -14,6 +14,5 @@ class Brain:
 		self.eyes = Eyes(robot)
 		self.fans = Fans(robot)
 
-		sleep(1)
-		self.arms.grab()
-		sleep(0.5)
+		while True:
+			print self.eyes.arena_position()
