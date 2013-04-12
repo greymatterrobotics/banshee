@@ -16,12 +16,12 @@ class Fans:
 		print "Init fans"
 
 	# Motor helpers
-	def off(self, motor):
-		self.r.servos[0][motor] = 53
+	def off(self, motors):
+		for i in motors:
+			self.r.servos[0][i] = 53
 
 	def stop(self):
-		for i in range(5):
-			self.off(i)
+		self.off(range(5))
 
 	def blow(self, motors):
 		for x in range(106, 121):
@@ -30,7 +30,7 @@ class Fans:
 				sleep(0.01)
 
 	def suck(self, motors):
-		for x in range(106, 75, -1):
+		for x in range(106, 62, -1): #make second number lower to increase power
 			for i in motors:
 				self.r.servos[0][i] = float(x) / 2
 				sleep(0.01)
@@ -42,9 +42,13 @@ class Fans:
 		self.blow([0, 1])
 
 	def forwards(self):
-		self.suck([0, 1])
-		sleep(1)
 		self.lift()
+		self.suck([0, 1])
+		sleep(0.1)
+		self.suck([2, 3])
+		sleep(0.5)
+		self.off([2, 3])
+
 
 	def left(self):
 		self.lift()

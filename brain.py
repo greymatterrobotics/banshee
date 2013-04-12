@@ -19,7 +19,7 @@ class Brain:
 
 
 		self.fans.forwards()
-		sleep(10)
+		sleep(7)
 
 
 		self.die()
