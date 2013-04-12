@@ -19,6 +19,16 @@ class Eyes:
 		else:
 			return False
 
+	def can_see_box(self):
+		markers = self.is_markers()
+		if markers != False:
+			for m in markers:
+				if m.info.marker_type == MARKER_TOKEN:
+					return {'rot': m.centre.polar.rot_y, 'id': m.info.code}
+		else:
+			return False
+
+	# TODO: Rename to marker_rotation
 	def pedestal_rotation(self, code):
 		markers = self.is_markers()
 		if markers != False:
