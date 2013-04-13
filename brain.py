@@ -14,13 +14,13 @@ class Brain:
 		self.eyes = Eyes(self.robot)
 		self.fans = Fans(self.robot)
 
-		#self.start()
+		self.start()
 		#self.second_token()
 
 
-		self.fans.lift()
-		while True:
-			sleep(2)
+		#self.fans.lift()
+		#while True:
+			#sleep(2)
 
 		#self.shitty_comp_mode()
 

@@ -70,3 +70,16 @@ class Fans:
 	def lift(self):
 		self.r.servos[0][4] = 67
 		sleep(0.5)
+
+
+	# Shift funcs
+	def shift_left(self):
+		self.lift()
+		self.suck([2])
+		self.blow([3])
+
+		self.blow([0])
+		self.suck([1])
+		sleep(0.2)
+		self.off([1])
+		self.off([0])
