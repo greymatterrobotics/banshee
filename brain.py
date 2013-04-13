@@ -14,7 +14,7 @@ class Brain:
 		self.eyes = Eyes(self.robot)
 		self.fans = Fans(self.robot)
 
-		self.start()
+		#self.start()
 		#self.second_token()
 
 
@@ -23,6 +23,23 @@ class Brain:
 			#sleep(2)
 
 		#self.shitty_comp_mode()
+
+
+		# Grip token
+		self.arms.open_arms()
+		print "About to grip"
+		sleep(1)
+		self.arms.grab()
+		sleep(1)
+
+		self.fans.forwards()
+		sleep(4)
+		self.fans.stop()
+		sleep(1)
+
+		self.arms.pedestal_pos()
+		sleep(1)
+		self.arms.open_arms()
 
 		self.die()
 
@@ -74,12 +91,6 @@ class Brain:
 		print "About to grip"
 		sleep(1)
 		self.arms.grab()
-
-		print "Moving forwards a bit"
-		self.fans.forwards()
-		sleep(2)
-		self.fans.stop()
-		sleep(1)
 
 		print "Strafing left to pedestal"
 		self.strafe_left_to_pedestal()

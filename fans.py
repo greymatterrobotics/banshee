@@ -77,9 +77,3 @@ class Fans:
 		self.lift()
 		self.suck([2])
 		self.blow([3])
-
-		self.blow([0])
-		self.suck([1])
-		sleep(0.2)
-		self.off([1])
-		self.off([0])
