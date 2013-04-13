@@ -18,14 +18,37 @@ class Brain:
 		#self.second_token()
 
 
-		#self.fans.lift()
-		#while True:
-			#sleep(2)
+		self.fans.lift()
+		while True:
+			sleep(2)
+
+		#self.shitty_comp_mode()
+
+		self.die()
+
+	def shitty_comp_mode(self):
+		sleep(3)
+
+		# Grip token
+		self.arms.open_arms()
+		print "About to grip"
+		sleep(1)
+		self.arms.grab()
+
+		# Strafe left
+		self.fans.left()
+		sleep(4)
+		self.fans.stop()
+		sleep(1)
 
 		self.fans.forwards()
 		sleep(3)
+		self.fans.stop()
+		sleep(1)
 
-		self.die()
+		self.arms.pedestal_pos()
+		sleep(1)
+		self.arms.open_arms()
 
 	def die(self):
 		sleep(0.5)

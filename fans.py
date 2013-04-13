@@ -56,11 +56,17 @@ class Fans:
 		self.suck([2])
 		self.blow([3])
 
+		self.blow([0])
+		self.suck([1])
+		sleep(0.2)
+		self.off([1])
+		self.off([0])
+
 	def right(self):
 		self.lift()
 
 
 	# Lift helpers
 	def lift(self):
-		self.r.servos[0][4] = 65
+		self.r.servos[0][4] = 67
 		sleep(0.5)
