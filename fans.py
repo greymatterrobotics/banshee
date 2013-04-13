@@ -30,7 +30,7 @@ class Fans:
 				sleep(0.01)
 
 	def suck(self, motors):
-		for x in range(106, 96, -1):
+		for x in range(106, 94, -1):
 			for i in motors:
 				self.r.servos[0][i] = float(x) / 2
 				sleep(0.01)
