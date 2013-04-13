@@ -18,9 +18,12 @@ class Brain:
 		#self.second_token()
 
 
-		self.fans.forwards()
-		sleep(7)
+		#self.fans.lift()
+		#while True:
+			#sleep(10)
 
+		self.fans.forwards()
+		sleep(3)
 
 		self.die()
 
