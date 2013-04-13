@@ -24,7 +24,13 @@ class Brain:
 
 		#self.shitty_comp_mode()
 
+		self.basic_mode()	
 
+		#self.strafe_left_to_pedestal()
+
+		self.die()
+
+	def basic_mode(self):
 		# Grip token
 		self.arms.open_arms()
 		print "About to grip"
@@ -40,8 +46,6 @@ class Brain:
 		self.arms.pedestal_pos()
 		sleep(1)
 		self.arms.open_arms()
-
-		self.die()
 
 	def shitty_comp_mode(self):
 		sleep(3)
@@ -77,7 +81,7 @@ class Brain:
 		# Identity operator because it could return 0deg which is Falsey
 		while pedestal_rot is False:
 			pedestal = self.eyes.can_see_pedestal()
-			self.fans.left()
+			self.fans.shift_left()
 			if pedestal is not False:
 				pedestal_rot = pedestal['rot']
 				self.fans.stop()
@@ -165,9 +169,9 @@ class Brain:
 			pedestal_rot = self.eyes.pedestal_rotation(id)
 			# Check we still have eyes on the marker
 			if pedestal_rot > 11:
-				self.fans.left()
+				self.fans.shift_left()
 			elif pedestal_rot < -2:
-				self.fans.right()
+				self.fans.shift_right()
 			elif -2 < pedestal_rot < 11:
 				print "Aligned!"
 				self.fans.stop()

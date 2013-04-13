@@ -51,19 +51,30 @@ class Fans:
 		self.off([2])
 
 
-	def left(self):
-		self.lift()
-		self.suck([2])
-		self.blow([3])
+	def left(self, first):
 
-		self.blow([0])
-		self.suck([1])
-		sleep(0.2)
-		self.off([1])
-		self.off([0])
+		self.lift()
+		if first == 1:
+			self.suck([3])
+			self.blow([2])
+		else:
+			self.blow([2])
+			self.suck([3])
+
+		#self.blow([0])
+		#self.suck([1])
+		#sleep(0.2)
+		#self.off([1])
+		#self.off([0])
 
 	def right(self):
 		self.lift()
+		if first == 1:
+			self.blow([3])
+			self.suck([2])
+		else:
+			self.suck([2])
+			self.blow([3])
 
 
 	# Lift helpers
@@ -74,6 +85,19 @@ class Fans:
 
 	# Shift funcs
 	def shift_left(self):
-		self.lift()
-		self.suck([2])
-		self.blow([3])
+		self.left((0))
+		sleep(1)
+		self.stop()
+		sleep(1)
+		self.left((1))
+		sleep(1)
+		self.stop()
+
+	def shift_right(self):
+		self.right((0))
+		sleep(1)
+		self.stop()
+		sleep(1)
+		self.right((1))
+		sleep(1)
+		self.stop()
