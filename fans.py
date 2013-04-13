@@ -24,13 +24,13 @@ class Fans:
 		self.off(range(5))
 
 	def blow(self, motors):
-		for x in range(110, 120):
+		for x in range(110, 122):
 			for i in motors:
 				self.r.servos[0][i] = float(x) / 2
 				sleep(0.01)
 
 	def suck(self, motors):
-		for x in range(106, 94, -1):
+		for x in range(106, 80, -1):
 			for i in motors:
 				self.r.servos[0][i] = float(x) / 2
 				sleep(0.01)
@@ -57,5 +57,5 @@ class Fans:
 
 	# Lift helpers
 	def lift(self):
-		self.r.servos[0][4] = 60
+		self.r.servos[0][4] = 65
 		sleep(0.5)
