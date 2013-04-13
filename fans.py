@@ -47,12 +47,14 @@ class Fans:
 		self.blow([0])
 		self.suck([1])
 		self.suck([2])
-		time.sleep(1)
+		sleep(1)
 		self.off([2])
 
 
 	def left(self):
 		self.lift()
+		self.suck([2])
+		self.blow([3])
 
 	def right(self):
 		self.lift()
