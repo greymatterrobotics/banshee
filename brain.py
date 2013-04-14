@@ -21,9 +21,9 @@ class Brain:
 		# while True:
 		# 	sleep(2)
 
-		self.basic_mode()
+		#self.basic_mode()
 
-		#self.complex_mode()
+		self.complex_mode()
 
 		# self.fans.lift()
 		# self.fans.spin()
@@ -38,42 +38,49 @@ class Brain:
 		sleep(1)
 		self.arms.grab()
 		sleep(1)
-	
-		print "Strafing to pedestal"
-		self.strafe_left_to_pedestal()
 
-		print "Moving foward"
-		self.fans.corrected_forwards()
-		sleep(3)
-		self.fans.stop()
-		sleep(1)
+		while True:
+			print "Strafing to pedestal"
+			self.strafe_left_to_pedestal()
 
-		print "Dropping"
-		self.arms.pedestal_pos()
-		sleep(1)
-		self.arms.open_arms()
-		self.arms.rest_pos()
-		self.arms.grab()
+			print "Moving foward"
+			self.fans.corrected_forwards()
+			sleep(3)
+			self.fans.stop()
+			sleep(1)
 
-		print "Reversing"
-		self.fans.backwards()
-		time.sleep()
+			print "Dropping"
+			self.arms.pedestal_pos()
+			sleep(1)
+			self.arms.open_arms()
+			self.arms.rest_pos()
+			self.arms.grab()
 
-		print "Spinning"
-		self.fans.spin()
-		self.time.sleep(3)
+			print "Reversing"
+			self.fans.backwards()
+			time.sleep()
 
-		print "Moving to marker"
-		self.fans.corrected_forwards(3.5)
+			print "Spinning"
+			self.fans.spin()
+			self.time.sleep(3)
 
-		print "Grabbing box"
-		self.arms.open_arms()
-		sleep(1)
-		self.arms.grab_pos()
-		sleep(1)
-		self.arms.grab()
-		sleep(1)
-		self.arms.rest_pos()
+			print "Moving to marker"
+			self.align_with_marker(box['id'])
+			self.fans.corrected_forwards(3.5)
+
+			print "Grabbing box"
+			self.arms.open_arms()
+			sleep(1)
+			self.arms.grab_pos()
+			sleep(1)
+			self.arms.grab()
+			sleep(1)
+			self.arms.rest_pos()
+			sleep(1)
+
+			print "Spinning"
+			self.fans.spin()
+			sleep(3.3)
 
 	def basic_mode(self):
 		# Grip token
