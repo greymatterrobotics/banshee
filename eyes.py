@@ -16,8 +16,7 @@ class Eyes:
 			for m in markers:
 				if m.info.marker_type == MARKER_PEDESTAL:
 					return {'rot': m.centre.polar.rot_y, 'id': m.info.code}
-		else:
-			return False
+		return False
 
 	def can_see_box(self):
 		markers = self.is_markers()
