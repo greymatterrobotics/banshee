@@ -64,11 +64,10 @@ class Brain:
 			# sleep(3)
 
 			while True:
-				markers = self.eyes.can_see_box()
-				if markers is not False:
+				marker = self.eyes.can_see_box()
+				if marker is not False:
 					print "Moving to marker"
-					print m
-					self.align_with_marker(m['id'])
+					self.align_with_marker(marker['id'])
 					self.fans.corrected_forwards(3.5)
 				else:
 					sleep(0.5)
