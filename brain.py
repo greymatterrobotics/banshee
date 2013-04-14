@@ -32,13 +32,28 @@ class Brain:
 
 		self.die()
 
+	def bullshit_spinning():
+		# High power lift
+		self.robot.servos[0][4] = 75
+		sleep(1)
+
+		self.fans.spin()
+		sleep(0.5)
+
+		for i in range(10):
+			self.r.servos[0][5] = 100
+			self.r.servos[0][6] = 0
+			sleep(0.5)
+			self.arms.open_arms()
+
+
 	def complex_mode(self):
 		self.arms.open_arms()
 		print "About to grip"
 		sleep(1)
 		self.arms.grab()
 		sleep(1)
-	
+
 		print "Strafing to pedestal"
 		self.strafe_left_to_pedestal()
 
