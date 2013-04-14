@@ -24,8 +24,7 @@ class Eyes:
 			for m in markers:
 				if m.info.marker_type == MARKER_TOKEN:
 					return {'rot': m.centre.polar.rot_y, 'id': m.info.code}
-		else:
-			return False
+		return False
 
 	# TODO: Rename to marker_rotation
 	def marker_rotation(self, code):
