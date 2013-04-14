@@ -91,7 +91,7 @@ class Fans:
 		self.forwards()
 		sleep(0.5)
 		self.off([0, 1])
-		sleep(1.5)
+		sleep(0.5)
 		self.stop()
 		sleep(1)
 
@@ -100,7 +100,7 @@ class Fans:
 		self.forwards()
 		sleep(0.5)
 		self.off([0, 1])
-		sleep(1.5)
+		sleep(0.5)
 		self.stop()
 		sleep(1)
 		#self.right((1))
