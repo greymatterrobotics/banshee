@@ -44,8 +44,7 @@ class Brain:
 			self.strafe_left_to_pedestal()
 
 			print "Moving foward"
-			self.fans.corrected_forwards()
-			sleep(3)
+			self.fans.corrected_forwards(3)
 			self.fans.stop()
 			sleep(1)
 
@@ -58,11 +57,11 @@ class Brain:
 
 			print "Reversing"
 			self.fans.backwards()
-			time.sleep()
+			sleep(3)
 
 			print "Spinning"
 			self.fans.spin()
-			self.time.sleep(3)
+			self.sleep(3)
 
 			print "Moving to marker"
 			self.align_with_marker(box['id'])
