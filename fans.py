@@ -88,22 +88,29 @@ class Fans:
 		#self.stop()
 		#sleep(1)
 		self.left(0)
-		#self.forwards()
-		sleep(0.5)
-		self.off([0, 1])
-		sleep(0.5)
+		sleep(1.5)
 		self.stop()
 		sleep(1)
 
 	def shift_right(self):
 		self.right(1)
-		self.forwards()
-		sleep(0.5)
-		self.off([0, 1])
-		sleep(0.5)
+		sleep(1.5)
 		self.stop()
 		sleep(1)
 		#self.right((1))
 		#sleep(1.5)
 		#self.stop()
 		#sleep(1)
+
+	def spin(self):
+		self.suck([2, 3])
+
+	def corrected_forward(self, time):
+		self.lift()
+		self.blow([0])
+		self.suck([1])
+		self.suck([2])
+		sleep(1)
+		self.off([2])
+		sleep(time - 1)
+		self.stop

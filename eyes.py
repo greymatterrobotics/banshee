@@ -29,7 +29,7 @@ class Eyes:
 			return False
 
 	# TODO: Rename to marker_rotation
-	def pedestal_rotation(self, code):
+	def marker_rotation(self, code):
 		markers = self.is_markers()
 		if markers != False:
 			for m in markers:

@@ -17,29 +17,63 @@ class Brain:
 		#self.start()
 		#self.second_token()
 
-
 		# self.fans.lift()
 		# while True:
 		# 	sleep(2)
 
-		#self.shitty_comp_mode()
+		self.basic_mode()
 
-		#self.basic_mode()	
+		#self.complex_mode()
 
+		# self.fans.lift()
+		# self.fans.spin()
+		# sleep(3.3)
+		# self.fans.stop()
+
+		self.die()
+
+	def complex_mode(self):
+		self.arms.open_arms()
+		print "About to grip"
+		sleep(1)
+		self.arms.grab()
+		sleep(1)
+	
+		print "Strafing to pedestal"
 		self.strafe_left_to_pedestal()
-		self.fans.forwards()
+
+		print "Moving foward"
+		self.fans.corrected_forwards()
 		sleep(3)
 		self.fans.stop()
 		sleep(1)
 
+		print "Dropping"
 		self.arms.pedestal_pos()
 		sleep(1)
 		self.arms.open_arms()
 		self.arms.rest_pos()
 		self.arms.grab()
 
+		print "Reversing"
+		self.fans.backwards()
+		time.sleep()
 
-		self.die()
+		print "Spinning"
+		self.fans.spin()
+		self.time.sleep(3)
+
+		print "Moving to marker"
+		self.fans.corrected_forwards(3.5)
+
+		print "Grabbing box"
+		self.arms.open_arms()
+		sleep(1)
+		self.arms.grab_pos()
+		sleep(1)
+		self.arms.grab()
+		sleep(1)
+		self.arms.rest_pos()
 
 	def basic_mode(self):
 		# Grip token
@@ -59,30 +93,6 @@ class Brain:
 		self.arms.open_arms()
 		self.arms.rest_pos()
 		self.arms.grab()
-
-	def shitty_comp_mode(self):
-		sleep(3)
-
-		# Grip token
-		self.arms.open_arms()
-		print "About to grip"
-		sleep(1)
-		self.arms.grab()
-
-		# Strafe left
-		self.fans.left()
-		sleep(4)
-		self.fans.stop()
-		sleep(1)
-
-		self.fans.forwards()
-		sleep(3)
-		self.fans.stop()
-		sleep(1)
-
-		self.arms.pedestal_pos()
-		sleep(1)
-		self.arms.open_arms()
 
 	def die(self):
 		sleep(0.5)
@@ -193,13 +203,13 @@ class Brain:
 		# Align to the pedestal
 		aligned = False
 		while not aligned:
-			pedestal_rot = self.eyes.pedestal_rotation(id)
+			marker_rot = self.eyes.marker_rotation(id)
 			# Check we still have eyes on the marker
-			if pedestal_rot > 11:
+			if marker_rot > 11:
 				self.fans.shift_left()
-			elif pedestal_rot < -2:
+			elif marker_rot < -2:
 				self.fans.shift_right()
-			elif -2 < pedestal_rot < 11:
+			elif -2 < marker_rot < 11:
 				print "Aligned!"
 				self.fans.stop()
 				aligned = True
