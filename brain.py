@@ -63,9 +63,16 @@ class Brain:
 			self.fans.spin()
 			self.sleep(3)
 
-			print "Moving to marker"
-			self.align_with_marker(box['id'])
-			self.fans.corrected_forwards(3.5)
+			while True:
+				markers = self.eyes.is_markers()
+				if markers is not False:
+					for m in markers:
+						print "Moving to marker"
+						self.align_with_marker(m['id'])
+						self.fans.corrected_forwards(3.5)
+				else:
+					sleep(0.5)
+					markers = self.eyes.is_markers()
 
 			print "Grabbing box"
 			self.arms.open_arms()
