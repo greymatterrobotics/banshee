@@ -40,36 +40,36 @@ class Brain:
 		sleep(1)
 
 		while True:
-			print "Strafing to pedestal"
-			self.strafe_left_to_pedestal()
+			# print "Strafing to pedestal"
+			# self.strafe_left_to_pedestal()
 
-			print "Moving foward"
-			self.fans.corrected_forwards(3)
-			self.fans.stop()
-			sleep(1)
+			# print "Moving foward"
+			# self.fans.corrected_forwards(3)
+			# self.fans.stop()
+			# sleep(1)
 
-			print "Dropping"
-			self.arms.pedestal_pos()
-			sleep(1)
-			self.arms.open_arms()
-			self.arms.rest_pos()
-			self.arms.grab()
+			# print "Dropping"
+			# self.arms.pedestal_pos()
+			# sleep(1)
+			# self.arms.open_arms()
+			# self.arms.rest_pos()
+			# self.arms.grab()
 
-			print "Reversing"
-			self.fans.backwards()
-			sleep(3)
+			# print "Reversing"
+			# self.fans.backwards()
+			# sleep(3)
 
-			print "Spinning"
-			self.fans.spin()
-			sleep(3)
+			# print "Spinning"
+			# self.fans.spin()
+			# sleep(3)
 
 			while True:
-				markers = self.eyes.is_markers()
+				markers = self.eyes.can_see_box()
 				if markers is not False:
-					for m in markers:
-						print "Moving to marker"
-						self.align_with_marker(m['id'])
-						self.fans.corrected_forwards(3.5)
+					print "Moving to marker"
+					print m
+					self.align_with_marker(m['id'])
+					self.fans.corrected_forwards(3.5)
 				else:
 					sleep(0.5)
 					markers = self.eyes.is_markers()
