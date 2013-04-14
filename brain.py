@@ -18,15 +18,26 @@ class Brain:
 		#self.second_token()
 
 
-		#self.fans.lift()
-		#while True:
-			#sleep(2)
+		# self.fans.lift()
+		# while True:
+		# 	sleep(2)
 
 		#self.shitty_comp_mode()
 
-		self.basic_mode()	
+		#self.basic_mode()	
 
-		#self.strafe_left_to_pedestal()
+		self.strafe_left_to_pedestal()
+		self.fans.forwards()
+		sleep(3)
+		self.fans.stop()
+		sleep(1)
+
+		self.arms.pedestal_pos()
+		sleep(1)
+		self.arms.open_arms()
+		self.arms.rest_pos()
+		self.arms.grab()
+
 
 		self.die()
 
@@ -39,13 +50,15 @@ class Brain:
 		sleep(1)
 
 		self.fans.forwards()
-		sleep(4)
+		sleep(6)
 		self.fans.stop()
 		sleep(1)
 
 		self.arms.pedestal_pos()
 		sleep(1)
 		self.arms.open_arms()
+		self.arms.rest_pos()
+		self.arms.grab()
 
 	def shitty_comp_mode(self):
 		sleep(3)
@@ -84,6 +97,20 @@ class Brain:
 			self.fans.shift_left()
 			if pedestal is not False:
 				pedestal_rot = pedestal['rot']
+				self.fans.stop()
+			sleep(0.2)
+
+		self.align_with_marker(pedestal['id'])
+
+	def strafe_to_marker(self):
+		self.fans.lift()
+		marker_rot = False
+		# Identity operator because it could return 0deg which is Falsey
+		while marker_rot is False:
+			marker = self.eyes.can_see_marker()
+			self.fans.shift_left()
+			if marker is not False:
+				marker_rot = marker['rot']
 				self.fans.stop()
 			sleep(0.2)
 

@@ -62,13 +62,7 @@ class Fans:
 			self.suck([2])
 			self.blow([3])
 
-		#self.blow([0])
-		#self.suck([1])
-		#sleep(0.2)
-		#self.off([1])
-		#self.off([0])
-
-	def right(self):
+	def right(self, first):
 		print "Right"
 
 		self.lift()
@@ -80,6 +74,7 @@ class Fans:
 			self.suck([3])
 
 
+
 	# Lift helpers
 	def lift(self):
 		self.r.servos[0][4] = 67
@@ -88,19 +83,27 @@ class Fans:
 
 	# Shift funcs
 	def shift_left(self):
-		self.left((0))
+		#self.left((0))
+		#sleep(1.5)
+		#self.stop()
+		#sleep(1)
+		self.left(0)
+		self.forwards()
+		sleep(0.5)
+		self.off([0, 1])
 		sleep(1.5)
 		self.stop()
 		sleep(1)
-		self.left((1))
-		sleep(1.5)
-		self.stop()
 
 	def shift_right(self):
-		self.right((0))
+		self.right(1)
+		self.forwards()
+		sleep(0.5)
+		self.off([0, 1])
 		sleep(1.5)
 		self.stop()
 		sleep(1)
-		self.right((1))
-		sleep(1.5)
-		self.stop()
+		#self.right((1))
+		#sleep(1.5)
+		#self.stop()
+		#sleep(1)
