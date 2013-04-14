@@ -61,7 +61,7 @@ class Brain:
 
 			print "Spinning"
 			self.fans.spin()
-			self.sleep(3)
+			sleep(3)
 
 			while True:
 				markers = self.eyes.is_markers()
