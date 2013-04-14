@@ -88,7 +88,7 @@ class Fans:
 		#self.stop()
 		#sleep(1)
 		self.left(0)
-		self.forwards()
+		#self.forwards()
 		sleep(0.5)
 		self.off([0, 1])
 		sleep(0.5)
