@@ -105,7 +105,7 @@ class Fans:
 	def spin(self):
 		self.suck([2, 3])
 
-	def corrected_forward(self, time):
+	def corrected_forwards(self, time):
 		self.lift()
 		self.blow([0])
 		self.suck([1])
@@ -113,4 +113,4 @@ class Fans:
 		sleep(1)
 		self.off([2])
 		sleep(time - 1)
-		self.stop
+		self.stop()
